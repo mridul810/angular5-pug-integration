@@ -4,24 +4,65 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Adding pug to Angular 5
 
-## Code scaffolding
+1. Install module using
+npm install -D pug pug-ng-html-loader
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+2. Run the command ng-eject
+	This opens the webpack.config.js
 
-## Build
+3. Add the code under module.exports - 	
+  // Comment: Should be added in nearby line number 410
+ 
+ module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.(pug|jade)$/,
+        use: ['pug-ng-html-loader']
+      }
+    ]
+  }
+}
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+this part should be added before 
+  module: {
+    plugin: [
+      {
+       ...
+	   }
+    ]
+  }
+}
 
-## Running unit tests
+4. Rename .html component to .pug
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+5. Change templateUrl to .html
 
-## Running end-to-end tests
+6. Run by using the following command - 
+	npm run start
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## Further help
+## Code Integration
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+The above code has been integrated in 
+
+Angular CLI: 1.6.7 (e)
+Node: 8.9.0
+OS: win32 x64
+Angular: 5.2.9
+... animations, common, compiler, compiler-cli, core, forms
+... http, language-service, platform-browser
+... platform-browser-dynamic, router
+
+@angular/cli: 1.6.7
+@angular-devkit/build-optimizer: 0.0.42
+@angular-devkit/core: 0.0.29
+@angular-devkit/schematics: 0.0.52
+@ngtools/json-schema: 1.1.0
+@ngtools/webpack: 1.9.7
+@schematics/angular: 0.1.17
+typescript: 2.5.3
+webpack-dev-server: 2.11.2
+webpack: 3.10.0
